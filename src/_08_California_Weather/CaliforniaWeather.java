@@ -1,6 +1,9 @@
 package _08_California_Weather;
 
 import java.util.HashMap;
+import java.util.Set;
+
+import javax.swing.JOptionPane;
 
 /*
  * OBJECTIVE:
@@ -33,13 +36,48 @@ public class CaliforniaWeather {
         HashMap<String, WeatherData> weatherData = Utilities.getWeatherData();
         
         // All city keys have the first letter capitalized of each word
-        String cityName = Utilities.capitalizeWords( "National City" );
-        WeatherData datum = weatherData.get(cityName);
+//        String cityName = Utilities.capitalizeWords( "Encinitas" );
+//        String cityName = Utilities.capitalizeWords(JOptionPane.showInputDialog("Enter a City"));
+//        String condition = Utilities.capitalizeWords(JOptionPane.showInputDialog("Enter a Condition"));
+        		
+//        WeatherData datum = weatherData.get(condition);
+//        Iterable<String> datum = weatherData.keySet();
+//        for (String data : datum) {
+//        	System.out.println(data);
+//        }
+        System.out.println("K"+weatherData.keySet());
+        System.out.println("S" + weatherData.values().size());
         
-        if( datum == null ) {
-            System.out.println("Unable to find weather data for: " + cityName);
-        } else {
-            System.out.println(cityName + " is " + datum.weatherSummary + " with a temperature of " + datum.temperatureF + " F");
+//        for (Integer i = 0; i < weatherData.values().size(); i++) {
+//        	System.out.println(weatherData.get("Clear"));
+//        }
+        int x = 0;
+        for (WeatherData s : weatherData.values()) {
+//        	System.out.println(s.weatherSummary);
+
+        	if (s.weatherSummary.equals("Clear")) {
+        		System.out.println(s.weatherSummary);
+//        		System.out.println(weatherData.get(s.temperatureF));
+        		System.out.println(s.temperatureF);
+        		System.out.println(weatherData);
+
+        	}
+
         }
+//		for (String c : weatherData.keySet()) {
+//			System.out.println("C" + weatherData.get(s));
+//		}
+//        System.out.println(datum);
+//        Integer x = 0;
+//        for (String i : weatherData.keySet()) {
+//        	System.out.println(weatherData.keySet());
+//        }
+//        if( datum == null ) {
+//            System.out.println("Unable to find weather data for: " + cityName);
+//        	System.out.println("Unable to find weather data for: " + condition);
+//        } else {
+//            System.out.println(cityName + " is " + datum.weatherSummary + " with a temperature of " + datum.temperatureF + " F");
+//        	System.out.println(condition + " is " + datum.weatherSummary);
+//        }
     }
 }

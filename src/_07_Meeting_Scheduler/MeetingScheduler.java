@@ -1,5 +1,8 @@
 package _07_Meeting_Scheduler;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class MeetingScheduler {
     /*
      * Your task is to code a method to find a meeting time for two people
@@ -22,7 +25,54 @@ public class MeetingScheduler {
      * Assume both schedules are in the same time zones
      */
     public static Schedule getMutualAvailability(Schedule person1, Schedule person2) {
-        
-        return null;
+//    	HashMap<String, Integer> weeklyAvailability =  new HashMap<String, Integer>();
+////    	int x = 0;
+//    	for (String i : person1.getSchedule().keySet()) {
+//        	System.out.println("I: "+ i + " VAL " + person1.getSchedule().values());
+//        	for (ArrayList<Integer> j : person1.getSchedule().values()) {
+////        		System.out.println("J " + j);
+//        		for (Integer x : j) {
+//        			System.out.println("X " + x);
+//        		}
+//        	}
+//        }
+//    	for (ArrayList<Integer> j : person2.getSchedule().values()) {
+//    		System.out.println("J: "+ j.get(x) + " "+ j);
+//    		x++;
+//    	}
+		HashMap<String, ArrayList<Integer>> sche1 = person1.getSchedule();
+		HashMap<String, ArrayList<Integer>> sche2 = person2.getSchedule();
+		
+		Schedule timeThatWorks = new Schedule();
+
+		String[] days = new String[7];
+		days[0] = "Monday";
+		days[1] = "Tuesday";
+		days[2] = "Wednesday";
+		days[3] = "Thursday";
+		days[4] = "Friday";
+		days[5] = "Saturday";
+		days[6] = "Sunday";
+
+		for (int q = 0; q < days.length; q++) {
+			ArrayList<Integer> timesFor1 = new ArrayList<Integer>();
+			ArrayList<Integer> timesFor2 = new ArrayList<Integer>();
+			timesFor1.addAll(sche1.get(days[q]));
+			timesFor2.addAll(sche2.get(days[q]));
+		
+			for (int i = 0; i < timesFor1.size(); i++) {
+				for (int o = 0; o < timesFor2.size(); o++) {
+					if (timesFor1.get(i) == timesFor2.get(o)) {
+						timeThatWorks.addAvailability(days[q], timesFor1.get(i));
+					}
+				}
+			}
+			
+		}
+
+		return timeThatWorks;
+    
+    	
+//        return null;
     }
 }
